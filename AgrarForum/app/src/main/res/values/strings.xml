@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">AgrarForum</string>
+
+    <string-array name="sub_categories">
+        <item>Bitkiçilik/Yem Bitkiləri</item>
+        <item>Biktiçilik/Texniki bitkilər</item>
+        <item>Biktiçilik/Dənli bitkilər</item>
+        <item>Biktiçilik/Bostan bitkiləri</item>
+        <item>Biktiçilik/Kartof bitkisi</item>
+        <item>Biktiçilik/Tərəvəz bitkiləri</item>
+        <item>Biktiçilik/Meyvə bitkiləri</item>
+        <item>Heyvandarlıq/İribuynuzlu</item>
+        <item>Heyvandarlıq/Xırdabuynuzlu</item>
+        <item>Heyvandarlıq/Quşçuluq</item>
+        <item>Texnika/Prosedur qaydaları</item>
+        <item>Texnika/İstismar qaydaları</item>
+        <item>Texnika/Təhlükəsizlik qaydaları</item>
+        <item>Digər/EKTİS</item>
+        <item>Digər/Subsidiya qaydaları</item>
+        <item>Digər/Aqrar siğorta</item>
+
+
+    </string-array>
+
+    <string-array name="categories">
+        <item>Bitkiçilik</item>
+        <item>Heyvandarlıq</item>
+        <item>Texnika</item>
+        <item>Digər</item>
+    </string-array>
+</resources>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3D3D3"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/blueBorder"
+        android:layout_width="245dp"
+        android:layout_height="156.36dp"
+        android:background="@drawable/custom_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159"
+        >
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/stheiti_light"
+        android:text="AgrarForum"
+        android:textColor="#707070"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/blueBorder"
+        app:layout_constraintEnd_toEndOf="@+id/blueBorder"
+        app:layout_constraintHorizontal_bias="0.4985"
+        app:layout_constraintStart_toStartOf="@+id/blueBorder"
+        app:layout_constraintTop_toTopOf="@+id/blueBorder"
+        app:layout_constraintVertical_bias="0.502" />
+
+    <EditText
+        android:id="@+id/login"
+        android:layout_width="315.62dp"
+        android:layout_height="52dp"
+        android:background="@drawable/shape_edit"
+        android:fontFamily="@font/stheiti_medium"
+        android:inputType="textPersonName"
+        android:hint="Login"
+        android:textAlignment="center"
+        android:textColor="#707070"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5005"
+        app:layout_constraintVertical_bias="0.1895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blueBorder"
+        />
+
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="315.62dp"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_edit"
+        android:fontFamily="@font/stheiti_medium"
+        android:hint="Parol"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="#707070"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5005"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintVertical_bias="0.0745" />
+
+
+    <Button
+        android:id="@+id/loginbutton"
+        android:layout_width="185dp"
+        android:layout_height="45dp"
+        android:background="@drawable/mybutton"
+        android:text="Proceed"
+        android:fontFamily="@font/stheiti_medium"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5005"
+        app:layout_constraintVertical_bias="0.0795"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        android:onClick="onClick"
+        android:textAllCaps="false"
+         />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/stheiti_medium"
+        android:text="Registrasiya-dan keç"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
+
+
+    <ImageView
+        android:layout_width="171dp"
+        android:layout_height="169dp"
+        android:alpha="0.1"
+        android:src="@drawable/tractor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <Button
+        android:id="@+id/goregister"
+        android:layout_width="26px"
+        android:layout_height="16px"
+        android:alpha="0.4"
+        android:background="@drawable/arrow_down"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+    <TextView
+        android:id="@+id/myText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</android.support.constraint.ConstraintLayout>

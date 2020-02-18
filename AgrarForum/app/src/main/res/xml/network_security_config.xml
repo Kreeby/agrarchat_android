@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">192.168.64.1</domain>
+        <domain includeSubdomains="true">192.168.73.42</domain>
+        <domain includeSubdomains="true">192.168.73.106</domain>
+
+        <domain includeSubdomains="true">192.168.99.64</domain>
+
+
+    </domain-config>
+</network-security-config>
