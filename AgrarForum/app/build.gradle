@@ -1,8 +1,30 @@
+//noinspection GradleCompatible
+
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/'}
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.6, 0.99.99]'
+
+    }
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
+
+
+
+
+
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
     defaultConfig {
+        multiDexEnabled true
         useLibrary 'org.apache.http.legacy'
         applicationId "com.example.kreeby.agrarforum"
         minSdkVersion 19
@@ -10,23 +32,34 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                onesignal_app_id: '77acd741-438b-41e2-9db6-1b7b43e1e1e6',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".debug"
         }
     }
 }
 
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation 'com.onesignal:OneSignal:[3.13.0, 3.99.99]'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
     implementation 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.squareup.okio:okio:2.1.0'
+    implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -34,7 +67,32 @@ dependencies {
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
     implementation 'com.loopj.android:android-async-http:1.4.9'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.android.support:multidex:1.0.3'
 
 
+//    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+//    implementation 'com.google.android.material:material:1.0.0'
+    api "com.google.android.gms:play-services-base:15.0.1"
+    api "com.google.android.gms:play-services-auth:15.0.1"
+    api "com.google.android.gms:play-services-identity:15.0.1"
 
+    // Google Firebase
+    // https://firebase.google.com/support/release-notes/android
+    api "com.google.firebase:firebase-core:16.0.1"
+    api "com.google.firebase:firebase-auth:16.0.3"
+    api "com.google.firebase:firebase-config:16.0.0"
+    api "com.google.firebase:firebase-storage:16.0.1"
+    api "com.google.firebase:firebase-database:16.0.1"
+    api "com.google.firebase:firebase-messaging:17.3.0"
+    api "com.google.firebase:firebase-appindexing:16.0.1"
+    api "com.google.firebase:firebase-functions:16.1.0"
+    api "com.google.firebase:firebase-invites:16.0.1"
+    // api "com.google.firebase:firebase-crash:16.0.1"
+    api "com.google.firebase:firebase-ads:15.0.1"
+    api "com.google.firebase:firebase-firestore:17.0.4"
+    api "com.google.firebase:firebase-perf:16.0.0"
+
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 }
+
+apply plugin: "com.google.gms.google-services"

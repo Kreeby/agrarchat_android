@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "191530972450",
+    "firebase_url": "https://agrarforum-e6a6b.firebaseio.com",
+    "project_id": "agrarforum-e6a6b",
+    "storage_bucket": "agrarforum-e6a6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191530972450:android:2a297f2e99d119bfada17b",
+        "android_client_info": {
+          "package_name": "com.example.kreeby.agrarforum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191530972450-761ni0rl6s6cler9bihbnmq3ci08ue1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtApcvU4ZbHUQmZkH-hvpsiLsip5GvkLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191530972450-761ni0rl6s6cler9bihbnmq3ci08ue1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

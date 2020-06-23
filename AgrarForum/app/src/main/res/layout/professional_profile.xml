@@ -17,9 +17,10 @@
         android:background="@drawable/custom_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"/>
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
@@ -49,7 +50,7 @@
         app:layout_constraintVertical_bias="0.025" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/stheiti_light"
@@ -64,16 +65,30 @@
 
 
     <Button
+        android:id="@+id/button3"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:background="@drawable/sidebar"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.071"
-        app:layout_constraintHorizontal_bias="0.931"/>
+        app:layout_constraintVertical_bias="0.071" />
 
+
+    <Button
+        android:stateListAnimator="@null"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:onClick="NotifcationsClick"
+        android:background="@drawable/notification"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.8" />
 
     <TextView
         android:layout_width="wrap_content"

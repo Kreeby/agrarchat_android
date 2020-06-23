@@ -19,6 +19,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -60,6 +62,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         email = (EditText) findViewById(R.id.email);
 
 
+
+
+
+
         sp = findViewById(R.id.random);
         sp.setVisibility(View.INVISIBLE);
 
@@ -98,6 +104,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 valUN = username.getText().toString();
                 varEmail = email.getText().toString();
                 varPass = password.getText().toString();
+
+
+                if(!isEmailValid(varEmail)) {
+                    email.setError("Not valid email format");
+                    email.requestFocus();
+                    return;
+                }
+
+                if(varPass.isEmpty()) {
+                    password.setError("Password is required");
+                    password.requestFocus();
+                    return;
+                }
 
                 if(pressed == true) {
                     granted = 1;
@@ -162,10 +181,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     if (okNo.equals("success")) {
                         //display in short period of time
                         Intent login = new Intent(RegisterActivity.this, MainActivity.class);
-                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
+                        startActivity(login);
+
+                        Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
                     } else {
                         //display in short period of time
-                        Toast.makeText(getApplicationContext(), "Login Not Successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Registration Not Successful", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -209,5 +230,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public static boolean isEmailValid(String email) {
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }

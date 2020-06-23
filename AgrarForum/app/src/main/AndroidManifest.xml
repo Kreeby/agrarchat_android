@@ -69,6 +69,8 @@
         <activity android:name=".QuestionProfessionalItself"/>
         <activity android:name=".AnswerQuestion"/>
         <activity android:name=".QuestionProfessionalItselfFromSimple"/>
+        <activity android:name=".Admin"/>
+        <activity android:name=".NotificationsActivity"/>
     </application>
 
 </manifest>

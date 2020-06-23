@@ -1,9 +1,9 @@
 package com.example.kreeby.agrarforum;
 
+import android.app.Application;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,33 +11,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.squareup.okhttp.MultipartBuilder;
+import com.onesignal.OneSignal;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
-import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.net.ssl.HttpsURLConnection;
-
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+//import com.squareup.okhttp.MultipartBuilder;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-
+    private Application application;
     private static final String TAG = "dsd";
     EditText mail;
     EditText password;
@@ -56,8 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        myText = findViewById(R.id.myText);
+        OneSignal.startInit(this).inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .setNotificationReceivedHandler(new NotificationHandler())
+                .init();
+//        myText = findViewById(R.id.myText);
         login = findViewById(R.id.goregister);
         login.setOnClickListener(this);
 
@@ -78,17 +75,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-//                if(!isEmailValid(valueMail)) {
-//                    mail.setError("Not valid email format");
-//                    mail.requestFocus();
-//                    return;
-//                }
+                if(!isEmailValid(valueMail)) {
+                    mail.setError("Not valid email format");
+                    mail.requestFocus();
+                    return;
+                }
 
-//                if(valuePass.isEmpty()) {
-//                    password.setError("Password is required");
-//                    password.requestFocus();
-//                    return;
-//                }
+                if(valuePass.isEmpty()) {
+                    password.setError("Password is required");
+                    password.requestFocus();
+                    return;
+                }
 
 
                 runInBackround(valueMail, valuePass);
@@ -157,8 +154,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             final String token = api.getString("api_token");
             final String granted = api.getString("granted");
             final String okNo = booked.getString("status");
-
-            final String ID = api.getString("id");
+            final String nickname = api.getString("username");
+            final String ID = api.getString("granted");
             Log.d("LOGIN", ID);
             runOnUiThread(new Runnable()
             {
@@ -167,11 +164,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if(okNo.equals("success")){
                         //display in short period of time
                         Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
-                        if(granted.equals("1") || granted.equals("15")) {
+                        if(granted.equals("1")) {
                             Intent changeToProfile = new Intent(MainActivity.this, ProfessionalProfile.class);
                             changeToProfile.putExtra("ID", ID);
                             changeToProfile.putExtra("GRANTED", granted);
                             changeToProfile.putExtra("TOKEN", token);
+                            changeToProfile.putExtra("USERNAME", nickname);
                             startActivity(changeToProfile);
 
 
@@ -179,6 +177,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         else if (granted.equals("0")) {
                             Intent changeToUser = new Intent(MainActivity.this, SimpleuserProfile.class);
+                            changeToUser.putExtra("id", ID);
+                            changeToUser.putExtra("GRANTED", granted);
+                            changeToUser.putExtra("TOKEN", token);
+
+                            changeToUser.putExtra("USERNAME", nickname);
+                            startActivity(changeToUser);
+                        }
+
+                        else if(granted.equals("15")) {
+                            Intent changeToUser = new Intent(MainActivity.this, Admin.class);
                             changeToUser.putExtra("id", ID);
                             changeToUser.putExtra("GRANTED", granted);
                             changeToUser.putExtra("TOKEN", token);
@@ -222,4 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("PROFILE", "is it here?" + myID);
         return myID;
     }
+
+
+
 }
