@@ -68,7 +68,7 @@ class NotificationHandler implements OneSignal.NotificationReceivedHandler {
                 @Override
                 public void run() {
                     //me    thod containing process logic.
-                    makeNetworkRequest("http://192.168.99.64:8000/notificationToDB/", str1, str2);
+                    makeNetworkRequest("http://10.10.10.54/notificationToDB/", str1, str2);
                 }
             }).start();
     }

@@ -2,9 +2,9 @@ package com.example.kreeby.agrarforum;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -48,7 +48,7 @@ public class QuestionsOfProfessional extends AppCompatActivity implements View.O
     Button profilim;
     Button haqqimizda;
     DrawerLayout drawerLayout;
-    android.support.v7.widget.Toolbar toolbar1;
+    androidx.appcompat.widget.Toolbar toolbar1;
     ActionBarDrawerToggle actionBarDrawerToggle;
     TextView titleText;
     TextView subtitleText;
@@ -128,7 +128,7 @@ public class QuestionsOfProfessional extends AppCompatActivity implements View.O
             @Override
             public void run() {
                 //me    thod containing process logic.
-                makeNetworkRequest("http://192.168.99.64:8000/listByWhom/", str1);
+                makeNetworkRequest("http://10.10.10.54/listByWhom/", str1);
 
 
             }

@@ -2,7 +2,7 @@ package com.example.kreeby.agrarforum;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -136,7 +136,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void run() {
                 //me    thod containing process logic.
-                makeNetworkRequest("http://192.168.99.64:8000/register/", str1, str2, str3, granted, str4);
+                makeNetworkRequest("http://10.10.10.54/register/", str1, str2, str3, granted, str4);
             }
         }).start();
     }

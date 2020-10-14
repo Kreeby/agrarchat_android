@@ -2,7 +2,7 @@ package com.example.kreeby.agrarforum;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -75,7 +75,7 @@ public class SearchMutexessises extends AppCompatActivity {
             @Override
             public void run() {
                 //method containing process logic.
-                makeNetworkRequest("http://192.168.99.64:8000/listUsers/");
+                makeNetworkRequest("http://10.10.10.54/listUsers/");
 
 
             }
@@ -203,8 +203,5 @@ public class SearchMutexessises extends AppCompatActivity {
     }
 
 
-    private void getUsers() {
-
-    }
 
 }

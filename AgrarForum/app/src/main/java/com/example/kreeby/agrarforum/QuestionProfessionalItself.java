@@ -2,13 +2,14 @@ package com.example.kreeby.agrarforum;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.tntkhang.fullscreenimageview.library.FullScreenImageViewActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -66,7 +67,7 @@ public class QuestionProfessionalItself extends AppCompatActivity {
             @Override
             public void run() {
                 //me    thod containing process logic.
-                makeNetworkRequest("http://192.168.99.64:8000/isAnswer/", str1, str2);
+                makeNetworkRequest("http://10.10.10.54/isAnswer/", str1, str2);
 
 
             }
@@ -158,4 +159,14 @@ public class QuestionProfessionalItself extends AppCompatActivity {
         }
     }
 
+    public void openImage(View view) {
+        Intent fullImageIntent = new Intent(QuestionProfessionalItself.this, FullScreenImageViewActivity.class);
+        // uriString is an ArrayList<String> of URI of all images
+        ArrayList<String> uriString = new ArrayList<String>();
+        uriString.add("http://10.10.10.54/uploads/images/store/" + imgS);
+        fullImageIntent.putExtra(FullScreenImageViewActivity.URI_LIST_DATA, uriString);
+        // pos is the position of image will be showned when open
+        fullImageIntent.putExtra(FullScreenImageViewActivity.IMAGE_FULL_SCREEN_CURRENT_POS, 0);
+        startActivity(fullImageIntent);
+    }
 }

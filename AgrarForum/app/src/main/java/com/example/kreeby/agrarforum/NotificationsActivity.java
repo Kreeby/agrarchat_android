@@ -1,7 +1,7 @@
 package com.example.kreeby.agrarforum;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ExpandableListView;
 
@@ -73,7 +73,7 @@ public class NotificationsActivity extends AppCompatActivity implements View.OnC
             @Override
             public void run() {
                 //me    thod containing process logic.
-                makeNetworkRequest("http://192.168.99.64:8000/getNotifications/");
+                makeNetworkRequest("http://10.10.10.54/getNotifications/");
             }
         }).start();
     }

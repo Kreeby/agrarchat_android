@@ -14,9 +14,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -185,68 +185,47 @@ public class AddQuestionActivity extends AppCompatActivity implements View.OnCli
     public void uploadImage(File file, String str2, String str3, String str4, String str5)
             throws IOException {
         OkHttpClient client = new OkHttpClient();
+        MultipartBody.Builder requestBodyBuilder;
         RequestBody requestBody;
         String responseString = "";
         Log.d("FILE", "FILE NAME" + file.getName());
+        requestBodyBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM)
+
+                .addFormDataPart("text", str2)
+                .addFormDataPart("api_token", str3)
+                .addFormDataPart("added_to", str4)
+                .addFormDataPart("category", str5);
+
         if (file.length() != 0) {
-            requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
+            requestBodyBuilder
                     .addFormDataPart("image", file.getName(),
-                            RequestBody.create(MediaType.parse("image/*"), file))
-                    .addFormDataPart("text", str2)
-                    .addFormDataPart("api_token", str3)
-                    .addFormDataPart("added_to", str4)
-                    .addFormDataPart("category", str5)
-                    .build();
-            Request request = new Request.Builder()
-                    .url("http://192.168.99.64:8000/addQuestion/")
-                    .post(requestBody)
-                    .build();
-
-            Call call = client.newCall(request);
-
-            Response response = call.execute();
-
-
-            Log.d("RESPONSE", response.toString());
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    Intent changeToProfile = new Intent(AddQuestionActivity.this, QuestionsOfProfessionalFromSimple.class);
-//                                changeToProfile.putExtra("ID", myID);
-//                                changeToProfile.putExtra("GRANTED", myGranted);
-                    changeToProfile.putExtra("ID", hisId);
-                    changeToProfile.putExtra("TOKEN", myToken);
-                    startActivity(changeToProfile);
-                }
-            });
-        } else {
-            requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                    .addFormDataPart("text", str2)
-                    .addFormDataPart("api_token", str3)
-                    .addFormDataPart("added_to", str4)
-                    .addFormDataPart("category", str5)
-                    .build();
-            Request request = new Request.Builder()
-                    .url("http://192.168.99.64:8000/addQuestion/")
-                    .post(requestBody)
-                    .build();
-
-            Call call = client.newCall(request);
-            Response response = call.execute();
-
-            Log.d("RESPONSE", response.toString());
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    Intent changeToProfile = new Intent(AddQuestionActivity.this, QuestionsOfProfessionalFromSimple.class);
-//                                changeToProfile.putExtra("ID", myID);
-//                                changeToProfile.putExtra("GRANTED", myGranted);
-                    changeToProfile.putExtra("ID", hisId);
-                    changeToProfile.putExtra("TOKEN", myToken);
-                    startActivity(changeToProfile);
-                }
-            });
-
+                            RequestBody.create(MediaType.parse("image/*"), file));
         }
-    }
+
+        requestBody = requestBodyBuilder.build();
+            Request request = new Request.Builder()
+                    .url("http://10.10.10.54/addQuestion/")
+                    .post(requestBody)
+                    .build();
+
+            Call call = client.newCall(request);
+
+            Response response = call.execute();
+
+
+            Log.d("RESPONSE", response.toString());
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    Intent changeToProfile = new Intent(AddQuestionActivity.this, QuestionsOfProfessionalFromSimple.class);
+//                                changeToProfile.putExtra("ID", myID);
+//                                changeToProfile.putExtra("GRANTED", myGranted);
+                    changeToProfile.putExtra("ID", hisId);
+                    changeToProfile.putExtra("TOKEN", myToken);
+                    startActivity(changeToProfile);
+                }
+            });
+        }
+
 
 
 
